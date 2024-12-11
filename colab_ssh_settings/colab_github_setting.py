@@ -13,7 +13,7 @@ def github_auth(persistent_key: bool):
 
     import os
 
-    
+    # Create the .ssh directory if it doesn't exist
     os.system("mkdir -p ~/.ssh")
 
     if persistent_key:
@@ -27,12 +27,14 @@ def github_auth(persistent_key: bool):
     private_key_path = private_key_dir + "/id_ed25519"
     public_key_path = private_key_path + ".pub"
 
+    # Create the public and private keys
     if not os.path.exists(os.path.expanduser(private_key_path)):
         fresh_key = True
         os.system(f"ssh-keygen -t ed25519 -f {private_key_path} -N ''")
     else:
         fresh_key = False
 
+    # Create symbolic links for the public and private keys in ~/.ssh
     if persistent_key:
         os.system("rm -f ~/.ssh/id_ed25519")
         os.system("rm -f ~/.ssh/id_ed25519.pub")
@@ -50,8 +52,11 @@ def github_auth(persistent_key: bool):
         print(public_key)
 
     # add github to known hosts (you may hardcode it to prevent MITM attacks)
+    # The official page for obtaining the public key is available at: 
+    # https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
     os.system("ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts")
 
+    # Restrict access to the private key
     os.system("chmod go-rwx ~/.ssh/id_ed25519")
 
     print("Please use SSH method to clone repo.")
