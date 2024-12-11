@@ -2,6 +2,12 @@
 Google ColaboratoryとGitHub（主にプライベートリポジトリ）を繋ぐテストをするリポジトリです。  
 https://github.com/tsunrise/colab-github を参考にして作成しました。
 
+# 使い方
+- すぐに使いたい方 ->  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mokroke/colab-github-connect-test/blob/main/use_my_python_file.ipynb)
+
+
+- ある程度中身を理解しつつ、セキュリティを意識しながら設定したい方 ->  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mokroke/colab-github-connect-test/blob/main/use_my_python_file.ipynb)
+
 # ファイル詳細
 - connect_test.ipynb
   - 最も簡単にGitHubとColabratoryを接続する方法
